@@ -1,8 +1,8 @@
 TARGET_URL = ENV['TARGET_URL'] || exit
 
-run lambda { |env|
+run proc { |env|
   request = Rack::Request.new(env)
   Rack::Response.new { |response|
-    response.redirect TARGET_URL, 301
+    response.redirect File.join(TARGET_URL, request.fullpath), 301
   }
 }
