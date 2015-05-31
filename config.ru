@@ -1,4 +1,4 @@
-TARGET_URL = ENV['TARGET_URL'] || exit
+TARGET_URL = ENV.fetch('TARGET_URL')
 
 run proc { |env|
   request = Rack::Request.new(env)
